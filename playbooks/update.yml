@@ -1,0 +1,24 @@
+---
+- name: Update Flask Application
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: set tag
+      ansible.builtin.set_fact: tag="{{ lookup('ansible.builtin.ini', 'tag', section='docker',  file='../config.ini') }}"
+
+    - name: Pull latest Docker image
+      community.docker.docker_image:
+        name: flask_app
+        tag: "{{ tag }}"
+        source: pull
+
+    - name: Restart Docker container
+      community.docker.docker_container:
+        name: flask_app_container
+        image: "flask_app:{{ tag }}"
+        state: started
+        ports:
+          - "5000:5000"
+        restart: yes
+        env:
+          secret: "{{ lookup('env', 'secret') }}"

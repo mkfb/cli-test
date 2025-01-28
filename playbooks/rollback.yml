@@ -1,0 +1,27 @@
+---
+- name: Rollback Flask Application
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: set tag
+      ansible.builtin.set_fact: tag="{{ lookup('ansible.builtin.ini', 'tag', section='docker',  file='../config.ini') }}"
+
+    - name: Stop Docker container
+      community.docker.docker_container:
+        name: flask_app_container
+        state: stopped
+
+    - name: Remove Docker container
+      community.docker.docker_container:
+        name: flask_app_container
+        state: absent
+
+    - name: Run previous version of Docker container
+      community.docker.docker_container:
+        name: flask_app_container
+        image: flask_app:{{ tag }}
+        state: started
+        ports:
+          - "5000:5000"
+        env:
+          secret: "{{ lookup('env', 'secret') }}"
