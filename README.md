@@ -35,7 +35,7 @@ to update the app make some changes on app.py for example change ```Hello, FLask
 # Update
 update the tag on config.ini to v2
 run ```python cli.py --config config.ini --env dev --secret=$secret update```  
-after the run finished you should see on http://localhost:5000 Hello, Flask!!!
+after the run finished you should see on http://localhost:5000 ```Hello, Flask!!!```
  
 # Rollback
 to rollback the app change the tag on config.ini to v1  
