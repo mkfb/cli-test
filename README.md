@@ -31,10 +31,10 @@ to define secret run ```export secret=<secret>``` on shell
 # Deploy
 to deploy the app run ```python cli.py --config config.ini --env dev --secret=$secret deploy```  
 after the run finished you should open http://localhost:5000 and see ```Hello, Flask!```  
-to update the app make some changes on app.py for example change ```Hello, FLask!``` to ```Hello, Flask!!!```
 
 # Update
-update the tag on config.ini to v2
+to update the app make some changes on app.py, for example change ```Hello, FLask!``` to ```Hello, Flask!!!```  
+update the tag on config.ini to v2  
 run ```python cli.py --config config.ini --env dev --secret=$secret update```  
 after the run finished you should see on http://localhost:5000 ```Hello, Flask!!!```
  
