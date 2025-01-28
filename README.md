@@ -6,6 +6,7 @@ the build and push of the docker image done by python docker module
 # Prerequisites
 1. run ```python -m venv venv && source venv/bin/activate```
 2. run ```pip install -r requirements.txt```
+3. docker should be installed
 
 # Usage
   to see cli options run ```python cli.py --help```. the output will be
