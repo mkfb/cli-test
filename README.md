@@ -25,7 +25,7 @@ Commands:
   rollback
   update
 ```
-to define secret run export secret=<secret> on shell
+to define secret run ```export secret=<secret>``` on shell
 
 # Deploy
 to deploy the app run ```python cli.py --config config.ini --env dev --secret=$secret deploy```  
